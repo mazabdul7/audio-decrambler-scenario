@@ -153,11 +153,11 @@ float bandstop(float input, float *w, float *b, float *a)
   shiftBuffer(bandstopBuff);
 
   //IIR filter equations
-  w[0]    = x - (a[1] * w[1]) - (a[2] * w[2]);
+  w[0]    = input - (a[1] * w[1]) - (a[2] * w[2]);
   float y_output = (b[0] * w[0]) + (b[1] * w[1]) + (b[2] * w[2]);
 
   //return the y value as the output
-  return output;
+  return y_output;
 }
 
 
@@ -180,9 +180,10 @@ void SysTick_Handler(void)
       float output = (outputBandstop*sine_value[i]);
 
       P2OUT = (output);
-
+      
+      //if our sine array reaches its end, reset it
       i++;
-      if (i == PTS){
+      if (i == 50){
           i = 0;
       }
 
