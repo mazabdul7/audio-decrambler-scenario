@@ -9,8 +9,7 @@ DATE: 9/12/2019
 #include <stdbool.h>
 #include <math.h>  // Maths Includes - This library is required to use the "sin" function
 
-#define PI 3.14159
-#define PTS 7.0f
+#define PI 3.1416
 static volatile float sine_value[50];
 
 // FILTER IMPLEMENTATION
